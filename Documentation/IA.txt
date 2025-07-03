@@ -1,0 +1,53 @@
+Inteligência Artificial Utilizada no Projeto
+
+Tipo de IA
+1. A IA utilizada neste projeto é do tipo:
+
+* Aprendizado de Máquina Supervisionado**
+* Mais especificamente: Aprendizado Profundo (Deep Learning)
+* Arquitetura usada: Rede Neural Convolucional (CNN)** do tipo **ResNet-18
+
+2. Arquitetura do Modelo: ResNet-18
+
+A ResNet-18 é uma arquitetura de rede neural profunda desenvolvida pela Microsoft Research. Ela é composta por **18 camadas**, com um conceito inovador chamado de “conexões residuais”, que permite treinar redes muito profundas sem sofrer com o problema do desvanecimento do gradiente.
+
+Essas conexões permitem que a rede “pule” algumas camadas se necessário, ajudando a preservar o fluxo de informação.
+
+3. Como a IA funciona no projeto
+
+Estrutura geral:
+
+* A IA foi pré-treinada ou treinada do zero para classificar imagens de radiografias.
+* A tarefa é classificação binária, ou seja, identificar se uma imagem está:
+
+  * `NORMAL` ou
+  * `PNEUMONIA`
+* O modelo recebe uma imagem (JPG/PNG) enviada via API e retorna:
+
+  * A classe predita
+  * E a confiança (probabilidade) da predição
+
+Passos executados:
+
+1. Recebe uma imagem via `UploadFile` na API FastAPI.
+2. A imagem é convertida e **transformada (redimensionada, normalizada).
+3. O modelo `ResNet-18` processa a imagem.
+4. A saída da rede passa por uma função softmax, gerando probabilidades.
+5. A classe com maior probabilidade é retornada.
+
+4. Ferramentas e Tecnologias
+
+| Componente          | Tecnologia/Framework               |
+| ------------------- | ---------------------------------- |
+| Framework de IA     | PyTorch                            |
+| Arquitetura         | ResNet-18                          |
+| Tipo de modelo      | CNN (Rede Neural Convolucional)    |
+| Backend IA          | FastAPI                            |
+| Comunicação externa | Spring Boot (via REST API)         |
+| Troca de dados      | Formato JSON + Multipart (Imagens) |
+
+5. Vantagens da abordagem
+
+* Boa precisão para imagens médicas.
+* ResNet é eficiente e leve comparada a redes mais profundas.
+* Fácil integração com sistemas externos via API.
