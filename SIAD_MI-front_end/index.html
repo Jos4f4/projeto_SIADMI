@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SIAD-MI - Diagnóstico por Imagem</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f2f4f7;
+      margin: 0;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+    }
+    .upload-wrapper {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 450px;
+      text-align: center;
+    }
+    .upload-wrapper h2 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+    .upload-wrapper p {
+      margin-top: 5px;
+      color: #777;
+    }
+    .upload-zone {
+      border: 2px dashed #ccc;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 10px;
+      cursor: pointer;
+      position: relative;
+    }
+    .upload-zone:hover {
+      background: #f9f9f9;
+    }
+    input[type="file"] {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+    .action-btns {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+    .action-btns button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    #reset-btn {
+      background-color: #ccc;
+      color: #333;
+    }
+    #convert-btn {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .result-box {
+      margin-top: 20px;
+      padding: 15px;
+      background: #eafbee;
+      border-left: 5px solid #4CAF50;
+      border-radius: 8px;
+      display: none;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <form class="upload-wrapper" id="upload-form">
+    <h2>Diagnóstico de Imagem</h2>
+    <p>Selecione uma imagem de raio-X para análise</p>
+    
+    <div class="upload-zone" onclick="document.getElementById('input-file').click()">
+      <p id="file-info">Nenhum arquivo selecionado</p>
+      <input type="file" id="input-file" name="file" accept="image/*" required />
+    </div>
+    
+    <div class="action-btns">
+      <button type="reset" id="reset-btn">Cancelar</button>
+      <button type="submit" id="convert-btn">Analisar</button>
+    </div>
+
+    <div class="result-box" id="result-box">
+      <p><strong>Predição:</strong> <span id="prediction-text">-</span></p>
+      <p><strong>Confiança:</strong> <span id="confidence-text">-</span></p>
+    </div>
+  </form>
+
+  <script>
+    const fileInput = document.getElementById('input-file');
+    const fileInfo = document.getElementById('file-info');
+    const form = document.getElementById('upload-form');
+    const resultBox = document.getElementById('result-box');
+    const predictionText = document.getElementById('prediction-text');
+    const confidenceText = document.getElementById('confidence-text');
+
+    fileInput.addEventListener('change', () => {
+      if (fileInput.files.length > 0) {
+        fileInfo.textContent = fileInput.files[0].name;
+      } else {
+        fileInfo.textContent = "Nenhum arquivo selecionado";
+      }
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const file = fileInput.files[0];
+      if (!file) {
+        alert("Por favor, selecione um arquivo.");
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("file", file);
+
+      try {
+        const response = await fetch("http://localhost:8080/api/diagnosis/analyze", {
+          method: "POST",
+          body: formData
+        });
+
+        if (!response.ok) throw new Error("Erro na requisição");
+
+        const result = await response.json();
+        predictionText.textContent = result.prediction || "N/A";
+        confidenceText.textContent = `${(result.confidence * 100).toFixed(2)}%`;
+
+        resultBox.style.display = 'block';
+
+      } catch (error) {
+        alert("Erro ao enviar a imagem: " + error.message);
+      }
+    });
+
+    form.addEventListener('reset', () => {
+      fileInfo.textContent = "Nenhum arquivo selecionado";
+      resultBox.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
