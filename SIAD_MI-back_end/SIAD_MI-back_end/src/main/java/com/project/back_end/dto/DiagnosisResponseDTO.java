@@ -1,6 +1,10 @@
 package com.project.back_end.dto;
 
-public class DiagnosisResponseDTO {
+import java.io.Serializable;
+
+public class DiagnosisResponseDTO implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	
 	private String prediction;
 	private double confidence;
