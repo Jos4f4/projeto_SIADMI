@@ -30,7 +30,7 @@ Projeto: Sistema Inteligente de Apoio a Diagnósticos Médicos por Imagem (SIAD-
 Fluxo de Funcionamento
 
 plaintext
-[App Desktop em Python]
+[Interface web simples]
     ↓ (upload imagem)
 [API Java Spring Boot Backend]
     ↓ (chama microserviço de IA Python via REST)
