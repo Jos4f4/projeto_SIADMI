@@ -3,12 +3,15 @@ package com.project.back_end.entities;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "tb_patient_entity")
 public class PatientEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -22,9 +25,12 @@ public class PatientEntity implements Serializable {
 	private String cpf;
 	private String rg;
 	private String sex;
-	private String 	nationality;
+	private String nationality;
 	private String naturalness;
+	
+	@Column(columnDefinition = "TEXT")
 	private String adress;
+	
 	private String phoneNumber;
 	private String email;
 	

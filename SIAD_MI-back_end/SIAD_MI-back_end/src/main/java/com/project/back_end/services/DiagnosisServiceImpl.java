@@ -58,11 +58,11 @@ public class DiagnosisServiceImpl {
 
 	            return new DiagnosisResponseDTO(prediction, confidence);
 	        } else {
-	            throw new RuntimeException("Erro ao comunicar com o serviço de IA");
+	            throw new RuntimeException("Error comunicating with IA Services");
 	        }
 
 	    } catch (IOException e) {
-	        throw new RuntimeException("Erro ao processar a imagem", e);
+	        throw new RuntimeException("Error processing the image", e);
 	    }
 	}
 }

@@ -3,20 +3,62 @@ package com.project.back_end.dto;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import com.project.back_end.entities.PatientEntity;
+
+import jakarta.persistence.Column;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 public class PatientDTO implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
+	@Column(unique = true)
 	private Long id;
+	
+	@NotBlank(message = "Required field")
+	@Size(min = 5, max= 60, message = "There must be between 5 and 60 characters")
+	@Column(unique = true)
 	private String name;
+	
+	@NotBlank(message = "Required field")
 	private LocalDate dateOfBirth;
+	
+	@NotBlank(message = "Required field")
+	@Size(min = 1, max= 11, message = "11 Digits")
+	@Column(unique = true)
 	private String cpf;
+	
+	@NotBlank(message = "Required field")
+	@Size(min = 1, max= 9, message = "9 Digits")
+	@Column(unique = true)
 	private String rg;
+	
+	@NotBlank(message = "Required field")
+	@Size(min = 5, max= 60, message = "There must be between 5 and 60 characters")
 	private String sex;
+	
+	@NotBlank(message = "Required field")
+	@Size(min = 5, max= 60, message = "There must be between 5 and 60 characters")
 	private String 	nationality;
+	
+	@NotBlank(message = "Required field")
+	@Size(min = 5, max= 60, message = "There must be between 5 and 60 characters")
 	private String naturalness;
+	
+	@NotBlank(message = "Required field")
+	@Size(min = 5, max= 60, message = "There must be between 5 and 100 characters")
 	private String adress;
+	
+	// Format number phone +5592999999999
+	@NotBlank(message = "Required fieldo")
+	@Size(min = 1, max= 60, message = "14 Digits")
+	@Column(unique = true)
 	private String phoneNumber;
+	
+	@Email(message = "Insert valid email")
+	@Column(unique = true)
 	private String email;
 	
 	public PatientDTO () {
@@ -37,6 +79,20 @@ public class PatientDTO implements Serializable {
 		this.adress = adress;
 		this.phoneNumber = phoneNumber;
 		this.email = email;
+	}
+	
+	public PatientDTO (PatientEntity entity) {
+		this.id = entity.getId();
+		this.name = entity.getName();
+		this.dateOfBirth = entity.getDateOfBirth();
+		this.cpf = entity.getCpf();
+		this.rg = entity.getRg();
+		this.sex = entity.getSex();
+		this.nationality = entity.getNationality();
+		this.naturalness = entity.getNaturalness();
+		this.adress = entity.getAdress();
+		this.phoneNumber = entity.getPhoneNumber();
+		this.email = entity.getEmail();
 	}
 
 	public Long getId() {
