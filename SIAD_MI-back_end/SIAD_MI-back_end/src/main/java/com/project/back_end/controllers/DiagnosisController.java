@@ -21,7 +21,7 @@ public class DiagnosisController {
         this.diagnosisService = diagnosisService;
     }
     
-    @CrossOrigin(origins = "*") //TEMPORABLE
+    @CrossOrigin(origins = "*") //TEMPORABLE - WILL BE IMPLEMENTED NEXT PROCESS
     @PostMapping("/analyze")
     public ResponseEntity<DiagnosisResponseDTO> analyze(@RequestParam("file") MultipartFile file) {
         DiagnosisResponseDTO response = diagnosisService.analyzeImage(file);
