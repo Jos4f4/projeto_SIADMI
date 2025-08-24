@@ -1,0 +1,47 @@
+package com.project.back_end.dto;
+
+import java.io.Serializable;
+
+import com.project.back_end.entities.DoctorEntity;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
+public class DoctorEntityDTO implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
+	private Long crm;
+	
+	@Size(min = 3, max = 80, message = "Nome precisar ter de 3 a 80 caracteres")
+    @NotBlank(message = "Campo requerido")
+	private String name;
+	
+	public DoctorEntityDTO(Long crm, String name) {
+		super();
+		this.crm = crm;
+		this.name = name;
+	}
+	
+	public DoctorEntityDTO(DoctorEntity entity) {
+		super();
+		crm = entity.getCrm();
+		name = entity.getName();
+	}
+
+	public Long getCrm() {
+		return crm;
+	}
+
+	public void setCrm(Long crm) {
+		this.crm = crm;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+}
