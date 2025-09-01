@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.project.back_end.dto.DoctorEntityDTO;
+import com.project.back_end.dto.HistoryEntityDTO;
 import com.project.back_end.dto.PatientEntityDTO;
-import com.project.back_end.entities.DoctorEntity;
+import com.project.back_end.entities.HistoryEntity;
 import com.project.back_end.entities.PatientEntity;
 import com.project.back_end.repositories.PatientEntityRepository;
 import com.project.back_end.services.exceptions.DatabaseException;
@@ -76,11 +76,11 @@ public class PatientEntityService {
         entity.setName(dto.getName());
         entity.setCpf(dto.getCpf());
         
-        entity.getDoctors().clear();
-        for (DoctorEntityDTO docDto : dto.getDoctors()) {
-        	DoctorEntity doc = new DoctorEntity();
-        	doc.setCrm(docDto.getCrm());
-        	entity.getDoctors().add(doc);
+        entity.getHistory().clear();
+        for (HistoryEntityDTO histDto : dto.getHistory()) {
+        	HistoryEntity hist = new HistoryEntity();
+        	hist.setId(histDto.getId());
+        	entity.getHistory().add(hist);
         }
     }
 }

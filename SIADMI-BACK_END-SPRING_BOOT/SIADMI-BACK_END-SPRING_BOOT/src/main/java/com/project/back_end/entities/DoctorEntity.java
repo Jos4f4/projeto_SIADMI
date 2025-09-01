@@ -9,7 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -25,8 +25,8 @@ public class DoctorEntity implements Serializable {
 	@Column(unique = true)
 	private String name;
 	
-	@ManyToMany(mappedBy = "doctors")
-    private Set<PatientEntity> patients = new HashSet<>();
+	@OneToMany(mappedBy = "doctor")
+    private Set<HistoryEntity> history = new HashSet<>();
 	
 	public DoctorEntity() {
 		
@@ -54,8 +54,8 @@ public class DoctorEntity implements Serializable {
 		this.name = name;
 	}
 	
-	public Set<PatientEntity> getPatients() {
-		return patients;
+	public Set<HistoryEntity> getHistory() {
+		return history;
 	}
 
 	@Override

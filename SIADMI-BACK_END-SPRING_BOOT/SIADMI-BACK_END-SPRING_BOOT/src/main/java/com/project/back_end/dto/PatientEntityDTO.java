@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.project.back_end.entities.DoctorEntity;
+import com.project.back_end.entities.HistoryEntity;
 import com.project.back_end.entities.PatientEntity;
 
 import jakarta.validation.constraints.NotBlank;
@@ -24,7 +24,7 @@ public class PatientEntityDTO implements Serializable {
 	@NotBlank(message = "Campo requerido")
 	private String cpf;
 	
-	private List<DoctorEntityDTO> doctors = new ArrayList<>();
+	private List<HistoryEntityDTO> history = new ArrayList<>();
 	
 	public PatientEntityDTO(Long id, String name, String cpf) {
 		super();
@@ -38,9 +38,9 @@ public class PatientEntityDTO implements Serializable {
 		name = entity.getName();
 		cpf = entity.getCpf();	
 		
-		for (DoctorEntity doc : entity.getDoctors()) {
-			doctors.add(new DoctorEntityDTO(doc));
-		}
+		for (HistoryEntity hist : entity.getHistory()) {
+        	history.add(new HistoryEntityDTO(hist));
+        }
 	}
 
 	public Long getId() {
@@ -67,8 +67,8 @@ public class PatientEntityDTO implements Serializable {
 		this.cpf = cpf;
 	}
 	
-	public List<DoctorEntityDTO> getDoctors(){
-		return doctors;
+	public List<HistoryEntityDTO> getHistory(){
+		return history;
 	}
 	
 }

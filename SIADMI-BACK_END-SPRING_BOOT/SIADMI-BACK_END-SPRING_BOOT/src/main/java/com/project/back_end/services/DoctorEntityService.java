@@ -9,7 +9,9 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.project.back_end.dto.DoctorEntityDTO;
+import com.project.back_end.dto.HistoryEntityDTO;
 import com.project.back_end.entities.DoctorEntity;
+import com.project.back_end.entities.HistoryEntity;
 import com.project.back_end.repositories.DoctorEntityRepository;
 import com.project.back_end.services.exceptions.DatabaseException;
 import com.project.back_end.services.exceptions.ResourceNotFoundException;
@@ -72,5 +74,12 @@ public class DoctorEntityService {
     private void copyDtoToEntity(DoctorEntityDTO dto, DoctorEntity entity) {
     	entity.setCrm(dto.getCrm());
         entity.setName(dto.getName());
+        
+        entity.getHistory().clear();
+        for (HistoryEntityDTO histDto : dto.getHistory()) {
+        	HistoryEntity hist = new HistoryEntity();
+        	hist.setId(histDto.getId());
+        	entity.getHistory().add(hist);
+        }
     }
 }

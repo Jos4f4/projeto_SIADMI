@@ -9,9 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -30,12 +28,9 @@ public class PatientEntity implements Serializable {
 	@Column(unique = true)
 	private String cpf;
 	
-	@ManyToMany
-	@JoinTable(name = "tb_patient_doctor",
-		joinColumns = @JoinColumn(name = "patient_id"), 
-		inverseJoinColumns = @JoinColumn(name = "doctor_id"))
-	private Set<DoctorEntity> doctors = new HashSet<>();
-
+	@OneToMany(mappedBy = "patient") 
+    private Set<HistoryEntity> history = new HashSet<>();
+	
 	public PatientEntity() {
 		
 	}
@@ -71,8 +66,8 @@ public class PatientEntity implements Serializable {
 		this.cpf = cpf;
 	}
 
-	public Set<DoctorEntity> getDoctors() {
-		return doctors;
+	public Set<HistoryEntity> getHistory() {
+		return history;
 	}
 
 	@Override

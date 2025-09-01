@@ -14,6 +14,7 @@ import com.project.back_end.entities.DiagnosisResponseEntity;
 
 @Service
 public class DiagnosisService {
+	
 	@Autowired
 	private WebClient webClient;
 
