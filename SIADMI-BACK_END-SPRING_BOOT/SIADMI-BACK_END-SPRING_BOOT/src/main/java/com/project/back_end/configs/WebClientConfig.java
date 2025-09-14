@@ -2,7 +2,6 @@ package com.project.back_end.configs;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.reactive.config.CorsRegistry;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @Configuration
@@ -10,6 +9,6 @@ public class WebClientConfig {
 
 	@Bean
 	public WebClient webClient(WebClient.Builder builder) {
-	    return builder.baseUrl("http://localhost:8000").build(); // URL do microserviço IA
+	    return builder.baseUrl("http://localhost:8000").build(); // URL of microservice AI
 	}
 }

@@ -29,7 +29,7 @@ public class DiagnosisResponseEntity implements Serializable {
 	    this.prediction = prediction;
 	    this.confidence = confidence;
 	}
-
+	
 	public String getPrediction() {
 	    return prediction;
 	}
