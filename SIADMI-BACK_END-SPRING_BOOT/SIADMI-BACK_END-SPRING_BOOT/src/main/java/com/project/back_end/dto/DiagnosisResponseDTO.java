@@ -9,7 +9,9 @@ public class DiagnosisResponseDTO implements Serializable {
 	private String prediction;
 	private double confidence;
 
-	public DiagnosisResponseDTO() {}
+	public DiagnosisResponseDTO() {
+		
+	}
 
 	public DiagnosisResponseDTO(String prediction, double confidence) {
 	    this.prediction = prediction;

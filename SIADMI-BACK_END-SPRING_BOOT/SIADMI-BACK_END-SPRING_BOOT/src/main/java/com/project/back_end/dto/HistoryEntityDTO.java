@@ -3,7 +3,6 @@ package com.project.back_end.dto;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-import com.project.back_end.entities.DiagnosisResponseEntity;
 import com.project.back_end.entities.DoctorEntity;
 import com.project.back_end.entities.HistoryEntity;
 import com.project.back_end.entities.PatientEntity;
@@ -25,6 +24,10 @@ public class HistoryEntityDTO implements Serializable {
 	@NotBlank(message = "Campo requerido")
 	private String description;
 
+	public HistoryEntityDTO() {
+		
+	}
+	
 	public HistoryEntityDTO(Long id, LocalDate localDate, PatientEntity patient, DoctorEntity doctor, 
 			String aiDiagnosis, Double aiConfidence, String description) {
 		super();

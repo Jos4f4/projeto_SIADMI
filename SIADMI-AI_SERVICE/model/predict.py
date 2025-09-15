@@ -7,29 +7,29 @@ import io
 import torch.nn as nn
 
 # Quantidade de classes no seu problema
-NUM_CLASSES = 2  # Altere se tiver mais que NORMAL/PNEUMONIA
+NUM_CLASSES = 2  # NORMAL/PNEUMONIA
 
-# 1. Reconstrua o modelo com a arquitetura usada no treinamento
+# Rebuild the model with the architecture used in training
 model = models.resnet18(weights=None)
 model.fc = nn.Linear(model.fc.in_features, NUM_CLASSES)
 
-# 2. Carregue os pesos salvos
+# Load the saved weights
 model.load_state_dict(torch.load("model/model.pt", map_location=torch.device("cpu")))
 
-# 3. Coloque em modo de inferência
+# Put in inference mode
 model.eval()
 
-# Transformações usadas no treino
+# Transformations used in training
 transform = transforms.Compose([
     transforms.Resize((224, 224)),
     transforms.ToTensor(),
     transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
 ])
 
-# Lista de classes
-classes = ['NORMAL', 'PNEUMONIA']  # Ajuste se tiver outras classes
+# List class
+classes = ['NORMAL', 'PNEUMONIA'] 
 
-# Função de predição
+# Function of prediction
 async def predict_image(file):
     image_bytes = await file.read()
     image = Image.open(io.BytesIO(image_bytes)).convert("RGB")

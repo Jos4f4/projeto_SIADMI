@@ -26,6 +26,10 @@ public class PatientEntityDTO implements Serializable {
 	
 	private List<HistoryEntityDTO> history = new ArrayList<>();
 	
+	public PatientEntityDTO() {
+		
+	}
+	
 	public PatientEntityDTO(Long id, String name, String cpf) {
 		super();
 		this.id = id;

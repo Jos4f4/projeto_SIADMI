@@ -1,4 +1,4 @@
-package com.project.back_end.controllers;
+/*package com.project.back_end.controllers;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -27,4 +27,6 @@ public class DiagnosisController {
         DiagnosisResponseEntity response = diagnosisService.processImage(file);
         return ResponseEntity.ok(response);
     }
-}
+}*/
+
+//This controller package is only used for test, the main request is HistoryEntityController

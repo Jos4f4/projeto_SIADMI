@@ -5,10 +5,10 @@ from model.predict import predict_image
 
 app = FastAPI()
 
-# Permitir requisições do backend Java
+# Requisitions of Java + Spring Boot
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Coloque o endereço exato do frontend/backend se necessário
+    allow_origins=["*"],  # Java + Spring Boot address permition to acess this service
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
