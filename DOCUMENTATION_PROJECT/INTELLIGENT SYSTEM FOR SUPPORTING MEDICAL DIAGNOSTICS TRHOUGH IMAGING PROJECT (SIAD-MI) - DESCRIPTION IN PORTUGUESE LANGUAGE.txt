@@ -5,14 +5,13 @@ Projeto: Sistema Inteligente de Apoio a Diagnósticos Médicos por Imagem (SIAD-
 * Frameworks:
 
   * `Spring Boot` – para criação de APIs RESTful
-  * `Spring Security` – autenticação/autorização
   * `Spring Data JPA` – integração com banco de dados
+
 * Funções:
 
   * Receber requisição via API (imagem + metadados)
   * Enviar imagem ao microserviço Python de IA
   * Armazenar e recuperar dados médicos (paciente, resultado, imagem)
-  * Gerenciar usuários médicos e permissões
 
 #3.Microserviço Python (para IA)
 
@@ -24,7 +23,7 @@ Projeto: Sistema Inteligente de Apoio a Diagnósticos Médicos por Imagem (SIAD-
 
 4.Banco de Dados ==============================================================================Not Implemented
 
-* PostgreSQL, MySQL ou MariaDB
+* H2 Database - Runtime
 * JPA/Hibernate para persistência
 
 Fluxo de Funcionamento
@@ -43,16 +42,6 @@ plaintext
 Segurança ==============================================================================Not Implemented
 
 * Comunicação segura via HTTPS
-* Autenticação médica com JWT
-* Criptografia de dados sensíveis no banco
-* Rate-limiting e verificação de integridade da imagem no backend
-
-Extras e Expansões ==============================================================================Not Implemented
-
-* Geração de relatório PDF com resultados
-* Suporte a múltiplos modelos IA (via seleção)
-* Clusterização de casos similares (com IA)
-* Feedback do médico para melhorar modelo (retraining futuro)
 
 Vantagens dessa Arquitetura
 
