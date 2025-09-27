@@ -29,7 +29,7 @@ transform = transforms.Compose([
 # List class
 classes = ['NORMAL', 'PNEUMONIA'] 
 
-# Function of prediction
+# Function of prediction ai
 async def predict_image(file):
     image_bytes = await file.read()
     image = Image.open(io.BytesIO(image_bytes)).convert("RGB")

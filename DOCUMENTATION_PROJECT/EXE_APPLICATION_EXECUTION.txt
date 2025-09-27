@@ -1,4 +1,4 @@
-Para rodar o backend, execute o tomcat em localhost:8080
+Para rodar o backend, execute o tomcat em localhost:8080 no Spring STS Spring Boot
 
 Para rodar o serviço de IA, atente para os seguintes comandos no Terminal:
 	python -m venv venv 
@@ -6,11 +6,11 @@ Para rodar o serviço de IA, atente para os seguintes comandos no Terminal:
 	venv\Scripts\activate
 
 	pip install fastapi uvicorn
+	
+	python.exe -m pip install --upgrade pip
 
 	pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
 
 	pip install python-multipart
 
 	uvicorn main:app --reload
-
-Para rodar o frontend web, execute o index html contido no pasta frontend do projeto, por enquanto o CORS tá configurando para aceitar parâmetros nulos.

@@ -1,7 +1,6 @@
-/*package com.project.back_end.controllers;
+package com.project.back_end.controllers;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,12 +20,9 @@ public class DiagnosisController {
         this.diagnosisService = diagnosisService;
     }
     
-    @CrossOrigin(origins = "*") //TEMPORABLE - WILL BE IMPLEMENTED NEXT PROCESS
     @PostMapping("/analyze")
     public ResponseEntity<DiagnosisResponseEntity> analyze(@RequestParam("file") MultipartFile file) {
         DiagnosisResponseEntity response = diagnosisService.processImage(file);
         return ResponseEntity.ok(response);
     }
-}*/
-
-//This controller package is only used for test, the main request is HistoryEntityController
+}
