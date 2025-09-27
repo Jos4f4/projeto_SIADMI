@@ -1,0 +1,53 @@
+Roadmap de Implementação para o SIADMI
+
+Curto Prazo (1ª fase – básico para rodar e usar)============================================================================================
+
+Foco: funcionalidade, clareza e confiabilidade mínima.
+
+ .Melhorar README com instruções de execução e exemplos de uso.
+
+ .Adicionar Swagger / OpenAPI no backend.
+
+ .Criar Dockerfiles para backend e AI service (+ docker-compose).
+
+ .Adicionar testes unitários básicos (backend e IA).
+
+ .Validar arquivos de entrada (tipo, tamanho, formato).
+
+ .Implementar tratamento de erros básicos (mensagens claras quando algo falhar).
+
+
+Médio Prazo (2ª fase – qualidade e robustez)=================================================================================================
+
+Foco: segurança, modularidade e automação.
+
+ .Adicionar autenticação/autorização (JWT ou OAuth2).
+
+ .Criar pipeline CI/CD no GitHub Actions (build, testes automáticos).
+
+ .Configurar logs estruturados no backend e no AI service.
+
+ .Implementar testes de integração (fluxo completo: backend ↔ IA).
+
+ .Criar processo de versionamento do modelo (checkpoints nomeados, pasta /models/).
+
+ .Documentar dataset e hiperparâmetros do modelo usado.
+
+ .Adicionar monitoramento de métricas (Prometheus + Grafana).
+
+
+Longo Prazo (3ª fase – escalabilidade e evolução)============================================================================================
+
+Foco: desempenho, segurança avançada e experiência do usuário.
+
+ .Suporte a execução em GPU (quando disponível).
+
+ .Adicionar fila de mensagens (Kafka/RabbitMQ) para alta escala.
+
+ .Implementar cache de resultados (evitar reprocessamento).
+
+ .Adicionar logs de auditoria (quem enviou, quando, resultado).
+
+ .Adotar MLflow ou DVC para rastrear treinamentos e versões do modelo.
+
+ .Testar resiliência e tolerância a falhas (circuit breaker, retries).
