@@ -5,31 +5,22 @@ Projeto: Sistema Inteligente de Apoio a Diagnósticos Médicos por Imagem (SIAD-
 * Frameworks:
 
   * `Spring Boot` – para criação de APIs RESTful
-  * `Spring Data JPA` – integração com banco de dados
 
 * Funções:
 
   * Receber requisição via API (imagem + metadados)
   * Enviar imagem ao microserviço Python de IA
-  * Armazenar e recuperar dados médicos (paciente, resultado, imagem)
 
 #3.Microserviço Python (para IA)
 
-* Motivo: A IA continua em Python (PyTorch, TensorFlow), comunicando-se com o backend via API REST ou HTTP.
+* Motivo: A IA continua em Python (PyTorch), comunicando-se com o backend via API REST ou HTTP.
 * Tecnologias:
 
-  * `FastAPI` ou `Flask`
+  * `FastAPI`
   * Servidor separado para a IA (chamado pelo Spring Boot)
-
-4.Banco de Dados ==============================================================================Not Implemented
-
-* H2 Database - Runtime
-* JPA/Hibernate para persistência
 
 Fluxo de Funcionamento
 
-plaintext
-[Interface web simples]
     ↓ (upload imagem)
 [API Java Spring Boot Backend]
     ↓ (chama microserviço de IA Python via REST)
@@ -38,8 +29,6 @@ plaintext
     ↑ retorna diagnóstico + probabilidade
 [Spring Boot salva no banco e envia para App]
     ↑ (resposta com dados ao App Desktop)
-
-Segurança ==============================================================================Not Implemented
 
 * Comunicação segura via HTTPS
 
